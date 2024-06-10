@@ -361,5 +361,3 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/WeaponShop/wwwroot/Media/hooray.mp3
-/WeaponShop/appsettings.json
