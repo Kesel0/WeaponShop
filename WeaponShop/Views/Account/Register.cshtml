@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/account.css" />
+</head>
+
+<body>
+    <div class="black_wrapper"></div>
+    <div class="enter_wrapper">
+        <div class="enter_container">
+            <h1>Registration</h1>
+            <form class="enter_form" asp-action="Register" method="post" enctype="multipart/form-data">
+                <input type="text" name="Email" placeholder="Enter your Email*" required />
+                <input type="text" name="Username" placeholder="Enter your username*" required />
+                <input type="password" name="Password" placeholder="Enter your password*" required />
+
+                <div class="file-upload-wrapper">
+                    <label class="file-upload-label">ID Card</label>
+                    <input class="file-upload-input" type="file" name="id_card" id="id_card" accept=".jpg, .png">
+                    <span class="file-upload-text">Файл не выбран</span>
+                </div>
+                <div class="file-upload-wrapper">
+                    <label class="file-upload-label">CCW</label>
+                    <input class="file-upload-input" type="file" name="ccw" id="ccw" accept=".jpg, .png">
+                    <span class="file-upload-text">Файл не выбран</span>
+                </div>
+                
+                <input class="submit_btn" type="submit" value="Register" />
+            </form>
+            <p class="enter_p">Already have an account? <a asp-action="Login">Login</a></p>
+        </div>
+    </div>
+    <script>
+        document.querySelector('.file-upload-input').addEventListener('change', function () {
+            const fileName = this.files.length > 0 ? this.files[0].name : 'Файл не выбран';
+            document.querySelector('.file-upload-text').textContent = fileName;
+        });
+    </script>
+    <script src="./js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model WeaponShop.Models.DBViewModel
+<!DOCTYPE html>
+
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    
+</head>
+
+<body>
+    <div class="content_container">
+        <header>
+            <div class="header_logo">
+                <img src="./img/floppa_mafia.jpg" alt="Alternate Text" />
+            </div>
+            <nav>
+                <ul class="header_list">
+                    <li>GUNS</li>
+                    <li>AMMO</li>
+                    <li>ACCESSORIES</li>
+                </ul>
+            </nav>
+            <ul class="header_list">
+                <li>image</li>
+                <li>image</li>
+                <li>imogu</li>
+            </ul>
+        </header>
+        <div class="top_draw">
+            <div class="top_draw_text">
+                <p>Text before header</p>
+                <h1>Some header Some header Some header</h1>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                </p>
+            </div>
+        </div>
+        <div class="best_sellers">
+            <div class="best_sellers_header">
+                <h2>BEST SELLERS</h2>
+                <h3>SEE ALL PRODUCTS</h3>
+            </div>
+            <div class="cards_space">
+                @if (Model != null && Model.Products != null)
+                {
+                   @foreach (var product in Model.Products)
+                    {
+                    <div class="weapon_card">
+                    
+                    <p class="weapon_card_type">@product.ProductSubtype</p>
+                    <h4 class="weapon_card_name">@product.ProductName</h4>
+                    <p class="weapon_card_price">$@product.ProductPrice</p>
+                    <p>Check</p>
+                    </div>   
+                    }
+                }
+                else
+                {
+                    <p>No products</p>
+                }
+            </div>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+</html>
+

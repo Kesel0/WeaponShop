@@ -1,0 +1,46 @@
+﻿@model WeaponShop.Models.DBViewModel
+<!DOCTYPE html>
+
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+</head>
+
+<body>
+    @if (Model != null && Model.Users != null)
+    {
+        @foreach (var user in Model.Users)
+        {
+            <h3>Username</h3>
+            <p>@user.Username</p>
+            <hr class="after_header_hr" />
+            <h3>Email</h3>
+            <p>@user.Email</p>
+            <hr class="after_header_hr" />
+            <form asp-action="Logout" asp-controller="Account" method="post" id="logoutForm">
+                <button type="submit">Выйти</button>
+            </form>
+            <hr class="after_header_hr" />
+            @if (user.isadmin)
+            {
+                <p>User is admin</p>
+            }
+            else
+            {
+                <p>User is not admin</p>
+            }
+        }
+    }
+    else
+    {
+        <span><a asp-action="Login" asp-controller="Account">Login</a></span>
+        <span><a asp-action="Register" asp-controller="Account">Register</a></span>
+    }
+    <h3>Username</h3>
+    <p></p>
+    <hr class="after_header_hr" />
+    <script src="./js/script.js"></script>
+</body>
+</html>

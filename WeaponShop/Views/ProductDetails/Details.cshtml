@@ -1,0 +1,66 @@
+@model WeaponShop.Models.DetailsViewModel
+<!DOCTYPE html>
+
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+</head>
+
+<body>
+        <div class="product_content">
+            <img class="product_image" src="~/img/@Model.Products.Image" alt="Alternate Text" />
+            <div class="product_description">
+                <h1 class="product_title">@Model.Products.ProductName</h1>
+                <p class="product_text">@Model.Products.ProductDescription</p>
+                <p class="product_price">$@Model.Products.ProductPrice</p>
+            @if(Model.Products.under_licence && Model.Users.ccw == null)
+            {
+                <p>Can not provide this product without your confirmed ccw.</p>
+            }
+            else
+            {
+                <script src="https://www.paypal.com/sdk/js?client-id=AfdvHYTnbHTIA8t8lSvW918A7_ahIv2q5SEWvrVzH31CMNXsJjzD9Z8lM4BzDgRTDR8Osxj1F8natdH4"></script>
+                <div id="paypal-button-container"><button class="buy_btn" id="custom-paypal-button">Buy</button></div>
+                <script>
+                    var productData = {
+                        productId: "@Model.Products.Id",
+                        productName: "@Model.Products.ProductName",
+                        productPrice: "@Model.Products.ProductPrice",
+                    };
+                    function handlePayPalButtonClick() {
+                        paypal.Buttons({
+                            createOrder: function (data, actions) {
+                                return fetch('/PayPal/CreateOrder', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        productPrice: productData.productPrice,
+                                        productId: productData.productId,
+                                        productName: productData.productName
+                                    })
+                                }).then(function (response) {
+                                    return response.json();
+                                }).then(function (data) {
+                                    return data.orderId;
+                                });
+                            },
+                            onApprove: function (data, actions) {
+                                return actions.order.capture().then(function (details) {
+                                    alert('Оплата прошла успешно!');
+                                    window.history.back();
+                                });
+                            }
+                        }).render('#paypal-button-container');
+                    }
+                    document.getElementById('custom-paypal-button').addEventListener('click', handlePayPalButtonClick);
+                </script>
+            }
+            </div>
+        </div>
+    <script src="./js/script.js"></script>
+</body>
+</html>

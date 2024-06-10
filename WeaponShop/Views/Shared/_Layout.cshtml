@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WeaponShop</title>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="content_container">
+        <header>
+            <a asp-controller="DBshow" asp-action="Index">
+                <div class="header_logo">
+                    <img src="@Url.Content($"~/img/logo.png")" alt="Alternate Text" />
+                </div>
+            </a>
+            
+            <nav>
+                <ul class="header_list">
+                    <a href="@Url.Action("Products", "AllProducts", new { productType = "Weapon", orderType = "Asc", searchTerm = "" })">
+                    <li class="header_list_guns">GUNS</li>
+                    </a>
+                    <a href="@Url.Action("Products", "AllProducts", new { productType = "Ammo", orderType = "Asc", searchTerm = "" })">
+                    <li class="header_list_ammo">AMMO</li>
+                    </a>
+                    <a href="@Url.Action("Products", "AllProducts", new { productType = "Accessory", orderType = "Asc", searchTerm = "" })">
+                    <li class="header_list_access">ACCESSORIES</li>
+                    </a>                   
+                </ul>
+            </nav>
+            <ul class="header_list">
+                <li><a asp-controller="User" asp-action="ShowProfile"><img class="header_prof_pict" src="@Url.Content($"~/img/user.png")" alt="Alternate Text" /></a></li>
+            </ul>
+        </header>
+        <hr class="after_header_hr" />
+        @RenderBody()
+        @await RenderSectionAsync("Scripts", required: false)
+    </div>
+    <script src="~/js/script.js"></script>
+</body>
+</html>

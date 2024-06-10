@@ -1,0 +1,435 @@
+
+/*Обнуление*/
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*--------------------*/
+.header_logo img {
+	width: 100px;
+}
+
+body {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: rgb(203, 215, 193);
+}
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-bottom: 5px;
+	padding: 0px 50px;
+}
+
+.header_list {
+	display: flex;
+	gap: 50px;
+}
+
+	.header_list li {
+		font-size: 24px;
+		padding: 10px;
+		padding-left: 30px;
+		color: white;
+	}
+
+
+
+.header_prof_pict {
+	width: 40px;
+}
+
+
+.content_container {
+	/*width: 80%;
+	margin-left: auto;
+	margin-right: auto;*/
+	background-image: url('../img/topo.png');
+	background-color: rgb(89, 104, 71);
+
+	min-height: 80%;
+}
+h1{
+	font-size: 36px;
+	color: white;
+}
+h2 {
+	font-size: 24px;
+	
+}
+.top_draw {
+	background: url('../img/camo_man.png');
+	background-position: right;
+	background-position-y: top;
+	background-size: 55%;
+	background-repeat: no-repeat;
+	min-height: auto;
+	padding: 10px;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	font-size: 18px;
+}
+.top_draw_text{
+
+	max-width: 730px;
+	padding-left: 50px;
+}
+	
+	.top_draw_text p, .top_draw_text h1 {
+		font-size: 30px;
+		margin-bottom: 15px;
+	}
+	.top_draw_text h1 {
+		font-size: 48px;
+	}
+.text_after_header {
+	width: 70%;
+	margin-bottom: 0px;
+	text-align: justify;
+}
+@media (max-width: 768px) {
+	.top_draw {
+		background-size: 100%; /* изменение размера фона для маленьких экранов */
+		padding-top: 50px; /* уменьшение верхнего отступа */
+	}
+
+	.top_draw_text {
+		width: 100%; /* изменение ширины блока текста для маленьких экранов */
+	}
+}
+
+@media (max-width: 480px) {
+	.top_draw {
+		padding: 5px; /* изменение общего отступа для очень маленьких экранов */
+	}
+}
+.best_sellers {
+	overflow: hidden;
+}
+.best_sellers_header {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	flex-wrap: wrap;
+	padding-left: 50px;
+	justify-content: space-between;
+}
+.best_sellers h2, .best_sellers h3 {
+	display: flex;
+	color: white;
+	}
+.best_sellers h3{
+	padding-right: 50px;
+}
+.ya_ebal{
+	display: flex;
+	align-items: center;
+	gap: 50px;
+}
+.best_sellers_a{
+	display: flex;
+}
+.arrow_block{
+	display: flex;
+}
+.arrow_btn{
+	height: 30px;
+	width: 25px;
+	background: none;
+	background-position: 0;
+	background-size: cover;
+}
+#arrow_prev {
+	background-image: url('../img/prev.png');
+}
+#arrow_next {
+	background-image: url('../img/next.png');
+}
+
+.see_all_text{
+	text-decoration: underline;
+}
+.weapon_card_img {
+	width: 250px;
+}
+.cards_space {
+	position: relative;
+	padding-left: 50px;
+	display: flex;
+	align-items: center;
+	margin: 15px 0px;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	gap: 50px;
+	scroll-behavior: smooth;
+	left: 0px;
+	transition: 0.5s;
+}
+.weapon_card {
+	min-height: 400px;
+	max-width: 250px;
+	font-size: 18px;
+}
+.cards_space_products {
+	display: grid;
+	gap: 25px;
+	align-items: center;
+	flex-wrap: wrap;
+	margin: 15px;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+.weapon_card_products {
+	margin-left: 25px;
+	min-height: 350px;
+	max-width: 250px;
+}
+.weapon_card_products p{
+	text-align: justify;
+}
+.weapon_card p{
+	padding: 3px;
+}
+	.weapon_card_name {
+		color: white;
+		font-size: 20px;
+	}
+.triple_prod_cardspace{
+	display:flex;
+
+	padding-left: 0px;
+
+	min-height: 700px;
+}
+.product_card{
+	width: 33.3%;
+}
+.product_card_ak {
+	background-image: url('../img/Ak47Black.png');
+	background-position: 0;
+	background-size: cover;
+
+}
+	.product_card_ak:hover {
+		background-image: url('../img/Ak47Gray.png');
+	}
+.product_card_vest {
+	background-image: url('../img/VestBlack.png');
+	background-position: 0;
+	background-size: cover;
+}
+.product_card_vest:hover {
+	background-image: url('../img/VestGray.png');
+}
+.product_card_ammo {
+	background-image: url('../img/AmmoBlack.png');
+	background-position: 0;
+	background-size: cover;
+}
+.product_card_ammo:hover {
+	background-image: url('../img/AmmoGray.png');
+}
+/*product*/
+.product_content {
+	margin-top: 50px;
+	display: flex;
+}
+.product_image {
+	display: flex;
+	width: 350px;
+}
+.product_description {
+	margin-left: 5px;
+	text-align: justify;
+	padding: 10px;
+}
+.after_header_hr {
+	border: 1px solid rgb(119, 114, 104);
+}
+
+.weapon_card_products_img {
+	width: 250px;
+}
+
+@media screen and (max-width: 1000px) {
+	.weapon_card_products_img {
+		width: 150px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.weapon_card_products_img {
+		width: 100px;
+	}
+}
+
+.filter {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.filter_icon {
+	width: 40px;
+}
+/*magnifier - сама иконка*/
+.magnifier {
+	width: 30px;
+}
+
+.magnifier_button {
+	background: none;
+	background-color: transparent;
+	padding-right: 50px;
+}
+
+.best_sellers_header_right {
+	display: flex;
+}
+
+/*Стиль фильтра*/
+.form_select{
+	border-radius: 15px;
+	font-size: 20px;
+	padding: 5px;
+}
+.form_select_option {
+
+}
+.form_select_option:hover{
+	background-color: white;
+	transition: 1s;
+}
+
+.filter_selections * {
+	margin-left: 20px;
+}
+
+.products_title {
+	text-align: center;
+	margin: 20px 0px;
+}
+
+
+body {
+	background-image: url('../img/topo_back.jpg');
+	background-size: cover;
+	background-repeat:no-repeat;
+	background-attachment: fixed;
+}
+.enter_wrapper{
+	position: relative;
+	height: 100vh;
+	display: flex;
+}
+.enter_container {
+	display: flex;
+	flex-direction: column;
+	width: 30%;
+	height: auto;
+	margin: auto;
+	background-color: rgb(72, 102, 68);
+	border-radius: 20px;
+	padding: 30px 15px;
+	box-shadow: black 10px
+}
+.enter_p{
+	margin-bottom: 20px;
+}
+.enter_container h1{
+	font-size: 28px;
+	padding: 5px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.enter_form {
+	flex-direction: column;
+	padding: 2vh;
+}
+.enter_form input {
+		width: 100%;
+		border-radius: 5px;
+		border: 2px #20381d solid;
+		padding: 14px;
+		margin: 5px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+.submit_btn {
+	cursor: pointer;
+}
+.file_inp{
+	font-size: 14px;
+}
+@media screen and (max-width: 1000px) {
+	h1 {
+		font-size: 28px;
+	}
+
+	.enter_form input {
+		font-size: 18px;
+	}
+
+	.enter_container {
+		width: 50%;
+	}
+}
+
+.after_header_hr {
+	border: 1px solid rgb(119, 114, 104);
+	width: 100%;
+}
+
+.form_type{
+	padding: 5px;
+	background-color: rgb(219, 213, 191);
+}
+.form_order {
+	padding: 5px;
+	background-color: rgb(219, 213, 191);
+}
+.filter_search {
+	margin-right: 20px;
+	padding: 5px;
+	background-color: rgb(219, 213, 191);
+}
+.buy_btn{
+	padding: 5px 30px;
+	font-size: 20px;
+	border-radius: 15px;
+}

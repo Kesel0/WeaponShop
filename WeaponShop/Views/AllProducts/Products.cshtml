@@ -1,0 +1,55 @@
+﻿@model List<Product>
+<!DOCTYPE html>
+
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+</head>
+
+<body>
+        <hr class="after_header_hr" />
+        <H1 class="products_title">PRODUCTS</H1>
+        <div class="best_sellers">
+            <form action="">
+                <div class="best_sellers_header">
+                    <div class="filter">
+                        <div class="filter_selections">
+                            <label for="productType">Product type:</label>
+                            <select class="form_select" id="productType" name="productType" required>
+                            <option class="form_select_option" value="Any">Any</option>
+                            <option class="form_select_option" value="Weapon">Weapon</option>
+                            <option class="form_select_option" value="Accessory">Accessory</option>
+                            <option class="form_select_option" value="Ammo">Ammo</option>
+                            </select>
+                            <label for="OrderType">Order by price:</label>
+                            <select class="form_select" id="OrderType" name="OrderType" required>
+                            <option class="form_select_option" value="Asc">Ascension</option>
+                            <option class="form_select_option" value="Desc">Descension</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="best_sellers_header_right">
+                        <input class="filter_search" type="text" id="searchTerm" name="searchTerm" placeholder="Search">
+                        <button class="magnifier_button" type="submit"><img class="magnifier" src="@Url.Content($"~/img/magnifier.png")" alt="Alternate Text" /></button>
+                    </div>
+                </div>
+            </form>
+            <div class="cards_space_products">
+                @foreach (var product in Model)
+                {
+                    <div class="weapon_card_products">
+                        <a asp-controller="ProductDetails" asp-action="Details" asp-route-id="@product.Id">
+                            <img class="weapon_card_img weapon_card_products_img" src="@Url.Content($"~/img/{product.Image}")" alt="Alternate Text" />
+                        </a>
+                        <p class="weapon_card_type">@product.ProductSubtype</p>
+                        <h4 class="weapon_card_name">@product.ProductName</h4>
+                        <p class="weapon_card_price">$@product.ProductPrice</p>
+                    </div>
+                }
+            </div>
+        </div>
+    <script src="~/js/script.js"></script>
+</body>
+</html>

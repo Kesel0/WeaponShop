@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authorization</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/account.css" />
+</head>
+
+<body>
+    <div class="enter_wrapper">
+        <div class="enter_container ">
+            <h1>Authorization</h1>
+            <hr class="after_header_hr" />
+            <form class="enter_form" asp-action="Login" method="post">
+                <input type="text" name="Username" placeholder="Enter your username" required />
+                <br />
+                <input type="password" name="Password" placeholder="Enter your password" required />
+                <br />
+                <input type="submit" value="Login" />
+            </form>
+            <p>Already have an account? <a asp-action="Register">Register</a></p>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+</html>

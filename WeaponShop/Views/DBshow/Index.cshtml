@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model WeaponShop.Models.DBViewModel
+<!DOCTYPE html>
+
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    
+</head>
+
+<body>
+        <div class="top_draw">
+            <div class="top_draw_text">
+                <p>The one and only</p>
+                <h1>WeaponShop</h1>
+                <p class="text_after_header">
+                    Only there can you find weapons both exquisite, beautiful, complex and of best quality.
+                    Big assortment of stuff for hunting, shooting, training, collecting won't leave one unsatified.
+                    WeaponShop, THE WeaponShop. Be swift and sharp like bullet.
+                </p>
+            </div>
+        </div>
+        <div class="best_sellers">
+            <div class="best_sellers_header">
+                <h2>BEST SELLERS</h2>
+                <div class="ya_ebal">
+                    <div class="arrow_block">
+                        <button class="arrow_btn" id="arrow_prev"></button>
+                        <button class="arrow_btn" id="arrow_next"></button>
+                    </div>
+                    <a class="best_sellers_a" asp-controller="AllProducts" asp-action="Products">
+                        <h3 class="see_all_text">SEE ALL PRODUCTS</h3>
+                    </a>
+                </div>
+            </div>
+            <div class="cards_space" id="cards_space">
+                @if (Model != null && Model.Products != null)
+                {
+                   @foreach (var product in Model.Products)
+                    {
+                    <div class="weapon_card">
+                    <a asp-controller="ProductDetails" asp-action="Details" asp-route-id="@product.Id">
+                        <img class="weapon_card_img" src="@Url.Content($"~/img/{product.Image}")" alt="Alternate Text" />
+                    </a>
+                    <p class="weapon_card_type">@product.ProductSubtype</p>
+                    <p class="weapon_card_name">@product.ProductName</p>
+                    <p class="weapon_card_price">$@product.ProductPrice</p>
+                    </div>   
+                    }
+                }
+                else
+                {
+                    <p>No products</p>
+                }
+            </div>
+            <div class="triple_prod_cardspace">
+                    <div class="product_card product_card_ak">
+                 </div>
+                    <div class="product_card product_card_vest">
+                 </div>
+                    <div class="product_card product_card_ammo">
+                    </div>
+            </div>
+        </div>
+</body>
+</html>
+
