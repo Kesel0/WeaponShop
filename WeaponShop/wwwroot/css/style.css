@@ -45,6 +45,7 @@ body {
 	font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif;
 	color: rgb(203, 215, 193);
+	height: auto;
 }
 
 header {
@@ -76,13 +77,9 @@ header {
 
 
 .content_container {
-	/*width: 80%;
-	margin-left: auto;
-	margin-right: auto;*/
 	background-image: url('../img/topo.png');
 	background-color: rgb(89, 104, 71);
-
-	min-height: 80%;
+	height: 100%;
 }
 h1{
 	font-size: 36px;
@@ -210,11 +207,11 @@ h2 {
 	gap: 25px;
 	align-items: center;
 	flex-wrap: wrap;
-	margin: 15px;
-	grid-template-columns: 1fr 1fr 1fr;
+	padding-left: 50px;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	margin-top: 35px;
 }
 .weapon_card_products {
-	margin-left: 25px;
 	min-height: 350px;
 	max-width: 250px;
 }
@@ -265,12 +262,14 @@ h2 {
 }
 /*product*/
 .product_content {
+	padding: 0px 50px;
 	margin-top: 50px;
 	display: flex;
 }
 .product_image {
 	display: flex;
-	width: 350px;
+	width: 450px;
+	height: 450px;
 }
 .product_description {
 	margin-left: 5px;
@@ -324,20 +323,25 @@ h2 {
 
 /*Стиль фильтра*/
 .form_select{
-	border-radius: 15px;
+	border-radius: 5px;
 	font-size: 20px;
 	padding: 5px;
-}
-.form_select_option {
-
 }
 .form_select_option:hover{
 	background-color: white;
 	transition: 1s;
 }
-
-.filter_selections * {
+.filter_label{
 	margin-left: 20px;
+}
+.filter_label:first-child {
+	margin-left: 0px;
+}
+.filter_search {
+	margin-right: 20px;
+	padding: 5px;
+	border-radius: 5px;
+	font-size: 20px;
 }
 
 .products_title {
@@ -423,13 +427,21 @@ body {
 	padding: 5px;
 	background-color: rgb(219, 213, 191);
 }
-.filter_search {
-	margin-right: 20px;
-	padding: 5px;
-	background-color: rgb(219, 213, 191);
-}
+
 .buy_btn{
 	padding: 5px 30px;
 	font-size: 20px;
 	border-radius: 15px;
+	margin-bottom: 15px;
+}
+
+.product_title{
+	margin-bottom: 15px;
+}
+.product_text {
+	margin-bottom: 15px;
+}
+.product_price{
+	margin-bottom: 5px;
+	font-weight: 600;
 }

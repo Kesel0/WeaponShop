@@ -49,7 +49,7 @@ namespace WeaponShop.Controllers
 
         public IActionResult Index()
         {
-            var products = _dbAdapter.GetProducts(4);
+            var products = _dbAdapter.GetProducts(5);
             var users = _dbAdapter.GetUsers();
 
             var viewModel = new DBViewModel { Products = products, Users = users };

@@ -26,12 +26,13 @@
                 <div class="file-upload-wrapper">
                     <label class="file-upload-label">ID Card</label>
                     <input class="file-upload-input" type="file" name="id_card" id="id_card" accept=".jpg, .png">
-                    <span class="file-upload-text">Файл не выбран</span>
+                    <span class="file-upload-text">No file</span>
                 </div>
+                <br />
                 <div class="file-upload-wrapper">
                     <label class="file-upload-label">CCW</label>
                     <input class="file-upload-input" type="file" name="ccw" id="ccw" accept=".jpg, .png">
-                    <span class="file-upload-text">Файл не выбран</span>
+                    <span class="file-upload-text">No file</span>
                 </div>
                 
                 <input class="submit_btn" type="submit" value="Register" />
@@ -41,10 +42,9 @@
     </div>
     <script>
         document.querySelector('.file-upload-input').addEventListener('change', function () {
-            const fileName = this.files.length > 0 ? this.files[0].name : 'Файл не выбран';
-            document.querySelector('.file-upload-text').textContent = fileName;
+            const fileName = this.files.length > 0 ? this.files[0].name : 'No file';
+            document.querySelector('.file-upload-text').textContent = fileName1;
         });
     </script>
-    <script src="./js/script.js"></script>
 </body>
 </html>

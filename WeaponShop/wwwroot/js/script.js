@@ -12,3 +12,4 @@ nextButton.addEventListener('click', () => {
     let currentLeft = parseInt(window.getComputedStyle(slider).left, 10) || 0;
     slider.style.left = (currentLeft + 150) + 'px';
 });
+

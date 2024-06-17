@@ -6,9 +6,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
+    <link rel="stylesheet" href="~/css/details.css" asp-append-version="true" />
 </head>
 
-<body>
+
         <hr class="after_header_hr" />
         <H1 class="products_title">PRODUCTS</H1>
         <div class="best_sellers">
@@ -16,14 +17,14 @@
                 <div class="best_sellers_header">
                     <div class="filter">
                         <div class="filter_selections">
-                            <label for="productType">Product type:</label>
+                            <label class="filter_label" for="productType">Product type:</label>
                             <select class="form_select" id="productType" name="productType" required>
                             <option class="form_select_option" value="Any">Any</option>
                             <option class="form_select_option" value="Weapon">Weapon</option>
                             <option class="form_select_option" value="Accessory">Accessory</option>
                             <option class="form_select_option" value="Ammo">Ammo</option>
                             </select>
-                            <label for="OrderType">Order by price:</label>
+                        <label class="filter_label" for="OrderType">Order by price:</label>
                             <select class="form_select" id="OrderType" name="OrderType" required>
                             <option class="form_select_option" value="Asc">Ascension</option>
                             <option class="form_select_option" value="Desc">Descension</option>
@@ -51,5 +52,5 @@
             </div>
         </div>
     <script src="~/js/script.js"></script>
-</body>
+
 </html>

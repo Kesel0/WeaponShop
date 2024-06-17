@@ -211,10 +211,11 @@ namespace WeaponShop.Controllers
 
             private string SaveImage(IFormFile image)
             {
+                
                 var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/userdocs");
                 var uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
                 var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
+                Console.WriteLine(filePath);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
                     image.CopyTo(fileStream);

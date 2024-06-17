@@ -1,0 +1,150 @@
+﻿
+@{
+    Layout = null;
+}
+@model WeaponShop.Models.DBViewModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AdminPanel</title>
+    
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="cards_space_admin">
+        @foreach (var product in Model.Products)
+        {
+            <div class="weapon_card_admin">
+                <div class ="product_image_container_admin">
+                    <img class="admin_edit" src="@Url.Content($"~/img/edit.png")" alt="Alternate Text" data-product-id="@product.Id" />
+                    <a asp-controller="ProductDetails" asp-action="Details" asp-route-id="@product.Id">
+                        <img class="weapon_card_img weapon_card_admin_img" src="@Url.Content($"~/img/{product.Image}")" alt="Alternate Text" />
+                    </a>
+                </div>
+                <p class="weapon_card_type">@product.ProductSubtype</p>
+                <h4 class="weapon_card_name">@product.ProductName</h4>
+                <p class="weapon_card_price">$@product.ProductPrice</p>
+            </div>
+        }
+    </div>
+    <div class="add_block" id="add_btn"><img class="admin_add" src="@Url.Content($"~/img/add.png")" alt="Alternate Text"/></div>
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="editForm" method="post" enctype="multipart/form-data">
+                <input type="hidden" id="editProductId" name="Id" />
+                <label for="editProductName">Name:</label>
+                <input type="text" id="editProductName" name="ProductName" />
+                <br />
+                <label for="editProductType">Type:</label>
+                <input type="text" id="editProductType" name="ProductType" />
+                <br />
+                <br />
+                <label for="editProductSubtype">Subtype:</label>
+                <input type="text" id="editProductSubtype" name="ProductSubtype" />
+                <br />
+                <br />
+                <label for="editProductDescription">Description:</label>
+                <input type="text" id="editProductDescription" name="ProductDescription" />
+                <br />
+                <label for="editProductPrice">Price:</label>
+                <input type="number" id="editProductPrice" name="ProductPrice" />
+                <br />
+                <br />
+                <label for="editProductCaliber">Caliber:</label>
+                <input type="text" id="editProductCaliber" name="Caliber" />
+                <br />
+                <label for="editUnderLicence">Under Licence:</label>
+                <div class="file-upload-wrapper">
+                    <label class="file-upload-label">Product Image</label>
+                    <input class="file-upload-input" type="file" name="editProductImage" id="editProductImage" accept=".jpg, .png" required>
+                </div>
+                <input type="checkbox" id="editUnderLicence" name="UnderLicence" />
+                <button type="button" id="cancelButton">Cancel</button>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var modal = document.getElementById("editModal");
+            var span = document.getElementsByClassName("close")[0];
+            var cancelButton = document.getElementById("cancelButton");
+            var addNewProductButton = document.getElementById("add_btn");
+
+            document.querySelectorAll('.admin_edit').forEach(function (editButton) {
+                editButton.onclick = function () {
+                    var productId = this.getAttribute('data-product-id');
+                    fetch('/AdminPanel/GetProduct/' + productId)
+                        .then(response => response.json())
+                        .then(product => {
+                            document.getElementById('editProductId').value = product.id;
+                            document.getElementById('editProductName').value = product.productName;
+                            document.getElementById('editProductType').value = product.productType;
+                            document.getElementById('editProductSubtype').value = product.productSubtype;
+                            document.getElementById('editProductDescription').value = product.productDescription;
+                            document.getElementById('editProductPrice').value = product.productPrice;
+                            document.getElementById('editProductCaliber').value = product.caliber;
+                            document.getElementById('editUnderLicence').checked = product.underLicence;
+                            modal.style.display = "block";
+                        })
+                        .catch(error => console.error('Error fetching product data:', error));
+                }
+            });
+
+            addNewProductButton.onclick = function () {
+                document.getElementById('editProductId').value = "";
+                document.getElementById('editProductName').value = "";
+                document.getElementById('editProductType').value = "";
+                document.getElementById('editProductSubtype').value = "";
+                document.getElementById('editProductDescription').value = "";
+                document.getElementById('editProductPrice').value = "";
+                document.getElementById('editProductCaliber').value = "";
+                document.getElementById('editUnderLicence').checked = false;
+                modal.style.display = "block";
+            };
+
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            cancelButton.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            document.getElementById('editForm').onsubmit = function (event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+                var productId = document.getElementById('editProductId').value;
+                var url = productId ? '/AdminPanel/EditProduct' : '/AdminPanel/AddProduct';
+                fetch(url, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            window.location.reload();
+                        } else {
+                            response.text().then(text => alert(text));
+                        }
+                    })
+                    .catch(error => console.error('Error saving product data:', error));
+            }
+        });
+
+        </script>
+    
+
+</body>
+</html>
