@@ -69,7 +69,9 @@ header {
 		color: white;
 	}
 
-
+.header_list li:hover{
+	text-decoration: underline;
+}
 
 .header_prof_pict {
 	width: 40px;
@@ -201,6 +203,9 @@ h2 {
 	min-height: 400px;
 	max-width: 250px;
 	font-size: 18px;
+}
+.weapon_card_img:hover{
+	box-shadow: rgba(0,0,0,0.4) 2px 2px;
 }
 .cards_space_products {
 	display: grid;

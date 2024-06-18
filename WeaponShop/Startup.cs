@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using DotNetEnv;
 using Serilog;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using WeaponShop.Controllers;
@@ -19,6 +19,7 @@ namespace WeaponShop
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            Env.Load();
         }
 
         public IConfiguration Configuration { get; }

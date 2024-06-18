@@ -5,6 +5,7 @@ using PayPalCheckoutSdk.Orders;
 using PayPalHttp;
 using System.Globalization;
 using System.Net;
+using DotNetEnv;
 
 public class PayPalOrderRequestModel
 {
@@ -23,8 +24,8 @@ public class PayPalController : Controller
     public PayPalController(IConfiguration configuration)
     {
 
-        string clientId = "AZjrfAB9HsckGkq7YmYdf1YpQ2j-PSm3xmgTn8LR5pEj6Ph0QUbqAm-HtEfBK3qyXX9HcZqJyhMqGgMK";
-        string clientSecret = "EKlkZCRUo_Br7yhdXfDZ9q5CRREKCcy9J06uM2aXGqNAASiF7Jvnbxd_FrstBdfEw-lbCCwiT7DgAnzm";
+        string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
+        string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
         PayPalEnvironment environment = new SandboxEnvironment(clientId, clientSecret); 
         _payPalClient = new PayPalHttpClient(environment);
 
